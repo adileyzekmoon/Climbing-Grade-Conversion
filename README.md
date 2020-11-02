@@ -13,3 +13,9 @@ Additional requests for features will be taken.
 Current features in-the-works:
 Pictures to represent grades (eg. coloured tags)
 Visual representation of current data
+
+Current gyms included:
+Onsight 
+Boulder World
+Lighthouse
+Boulder Plus
