@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from trueskill import Rating, rate_1vs1
 import random
@@ -51,5 +51,5 @@ def submit():
     gradeB = contenders[1]
 #    print(gym)
     
-    return render_template('index.html', gradeA=gradeA, gradeB=gradeB, dataCount=dataCount)
+    return redirect(url_for('main'))
 
