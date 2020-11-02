@@ -18,10 +18,11 @@ def main():
     contenders = random.sample(grades, 2)
     gradeA = contenders[0]
     gradeB = contenders[1]
+    dataCount = gym["dataCount"]
     
 #    print(gym)
     
-    return render_template('index.html', gradeA=gradeA, gradeB=gradeB)
+    return render_template('index.html', gradeA=gradeA, gradeB=gradeB, dataCount=dataCount)
 
 @app.route('/submit', methods=["POST", "GET"])
 def submit():
@@ -31,14 +32,18 @@ def submit():
     print(loser)
     
     gym = collection.find_one({"name": "Climbing Conversion Grades"})
+    dataCount = gym["dataCount"]
     
     winnerRating, loserRating = rate_1vs1(Rating(gym["grades"][winner]), Rating(gym["grades"][loser]))
     print(winnerRating.mu)
     print(loserRating.mu)
     
     post = collection.find_one_and_update({"name": "Climbing Conversion Grades"},
-                                     {"$set": {"grades."+winner : winnerRating.mu,
-                                              "grades."+loser : loserRating.mu}})
+                                          {"$set": {"grades."+winner : winnerRating.mu,
+                                                    "grades."+loser : loserRating.mu},
+                                          "$inc": {"dataCount": 1}
+                                          }
+                                         )
 
     grades = list(gym["grades"].keys())
     contenders = random.sample(grades, 2)
@@ -46,5 +51,5 @@ def submit():
     gradeB = contenders[1]
 #    print(gym)
     
-    return render_template('index.html', gradeA=gradeA, gradeB=gradeB)
+    return render_template('index.html', gradeA=gradeA, gradeB=gradeB, dataCount=dataCount)
 

@@ -10,4 +10,4 @@ db = client.ClimbingConversionDB
 collection = db.conversionCollection
 
 post = collection.find_one_and_update({"name": "Climbing Conversion Grades"},
-                                     {"$set": {"grades.testGrade1" : defaultMu}})
+                                     {"$set": {"dataCount": 0}})

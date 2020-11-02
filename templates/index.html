@@ -27,9 +27,9 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#intro">Home</a>
+                        <a class="nav-link" href="{{ url_for('main') }}">Home</a>
                     </li>
-<!--
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="#bio">Conversion Chart</a>
                     </li>
@@ -44,6 +44,9 @@
                     </li>
 -->
                 </ul>
+                <span class="navbar-text">
+                    {{dataCount}}
+                </span>
             </div>
         </nav>
 
@@ -80,7 +83,7 @@
                     </div>
 
                 </div>
-                
+
                 <div class="row mt-5">
 
                     <div class="col">
