@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from trueskill import Rating, rate_1vs1
 
-defaultMu = 25
+defaultMu = 100
 
 client = MongoClient('mongodb+srv://adileyzekmoon:baozakeruga@cluster0.tnqbh.mongodb.net/ClimbingConversion?retryWrites=true&w=majority')
 
@@ -10,6 +10,7 @@ db = client.ClimbingConversionDB
 collection = db.conversionCollection
 
 testData = {"name": "Climbing Conversion Grades",
+            "dataCount": 0,
             "grades":{"Onsight Climbing Gym - Black" : defaultMu,
                       "Onsight Climbing Gym - Pink" : defaultMu,
                       "Onsight Climbing Gym - Lime" : defaultMu,
