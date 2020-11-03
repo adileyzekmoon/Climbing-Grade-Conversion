@@ -67,14 +67,14 @@
 
                     <div class="col">
                         <div class="d-flex justify-content-center">
-                            <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ url_for('submit', winner=gradeA, loser=gradeB) }}">{{gradeA}}</a>
+                            <a class="w-100" href="{{ url_for('submit', winner=gradeA, loser=gradeB) }}"><button type="button" class="btn btn-outline-secondary btn-lg btn-block" >{{gradeA}}</button></a>
                         </div>
 
                     </div>
 
                     <div class="col">
                         <div class="d-flex justify-content-center">
-                            <a type="button" class="btn btn-outline-secondary btn-lg btn-block" href="{{ url_for('submit', winner=gradeB, loser=gradeA) }}">{{gradeB}}</a>
+                            <a class="w-100" href="{{ url_for('submit', winner=gradeB, loser=gradeA) }}"><button type="button" class="btn btn-outline-secondary btn-lg btn-block" >{{gradeB}}</button></a>
                         </div>
 
                     </div>
