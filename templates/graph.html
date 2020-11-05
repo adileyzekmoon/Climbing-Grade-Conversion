@@ -9,6 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/978b63f316.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
@@ -54,48 +57,9 @@
 
     <main id="content" class="pt-5">
 
-        <section id="quiz" class="pt-5">
+        <section id="quiz" class="pt-5 d-flex">
 
-
-
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col">
-                        <h2 class="d-flex justify-content-center">SG Climbing Grades - Which is harder?</h2>
-                    </div>
-                </div>
-
-                <div class="row mt-5">
-
-                    <div class="col">
-                        <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeA, loser=gradeB) }}"><button type="button" class="btn btn-outline-secondary btn-lg btn-block" >{{gradeA}}</button></a>
-                        </div>
-
-                    </div>
-
-                    <div class="col">
-                        <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeB, loser=gradeA) }}"><button type="button" class="btn btn-outline-secondary btn-lg btn-block" >{{gradeB}}</button></a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="row mt-5">
-
-                    <div class="col">
-                        <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('main') }}"><button type="button" class="btn btn-secondary btn-lg btn-block" >SKIP</button></a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <canvas id="myChart"></canvas>
 
         </section>
 
@@ -103,6 +67,36 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'horizontalBar',
+
+            // The data for our dataset
+            data: {
+                labels: {{
+                        grades | safe
+                    }},
+                datasets: [{
+                    backgroundColor: "rgba(0, 0, 0, 0.3)",
+                    borderColor: "rgba(0, 0, 0, 0.5)",
+                    borderWidth: 2,
+                    data: {{
+                            ratings
+                        }}
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+
+    </script>
+
+
 
 </body>
 

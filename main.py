@@ -53,3 +53,19 @@ def submit():
     
     return redirect(url_for('main'))
 
+
+@app.route('/graph')
+def graph():
+    gym = collection.find_one({"name": "Climbing Conversion Grades"})
+    grades = list(gym["grades"].keys())
+    ratings = list(gym["grades"].values())
+    data = []
+    for i in range(len(grades)):
+        data.append({"label": grades[i],
+                     "y": ratings[i]})
+    dataCount = gym["dataCount"]
+    print(data)
+    
+    
+    
+    return render_template('graph.html', dataCount=dataCount, grades=grades, ratings=ratings, data=data)
