@@ -59,13 +59,34 @@ def graph():
     gym = collection.find_one({"name": "Climbing Conversion Grades"})
     grades = list(gym["grades"].keys())
     ratings = list(gym["grades"].values())
-    data = []
-    for i in range(len(grades)):
-        data.append({"label": grades[i],
-                     "y": ratings[i]})
     dataCount = gym["dataCount"]
-    print(data)
+    os = []
+    bw = []
+    bp = []
+    lh = []
+    for i in range(len(grades)):
+        if ("Onsight Climbing Gym" in grades[i]):
+            os.append({"y": ratings[i],
+                            "label": grades[i]
+                           })
+            
+        if ("Boulder World" in grades[i]):
+            bw.append({"y": ratings[i],
+                            "label": grades[i]
+                           })
+            
+        if ("Boulder Plus" in grades[i]):
+            bp.append({"y": ratings[i],
+                            "label": grades[i]
+                           })
+            
+        if ("Lighthouse" in grades[i]):
+            lh.append({"y": ratings[i],
+                            "label": grades[i]
+                           })
     
     
+            
     
-    return render_template('graph.html', dataCount=dataCount, grades=grades, ratings=ratings, data=data)
+    
+    return render_template('graph.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh)
