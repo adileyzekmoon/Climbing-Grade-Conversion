@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from trueskill import Rating, rate_1vs1
 import random
+from db import client
 
-client = MongoClient('mongodb+srv://adileyzekmoon:baozakeruga@cluster0.tnqbh.mongodb.net/ClimbingConversion?retryWrites=true&w=majority')
 
 db = client.ClimbingConversionDB
 
