@@ -68,39 +68,122 @@
 
                 <div class="row mt-5">
 
-                    <div class="col">
+                    <div class="col-6">
                         <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeA, loser=gradeB) }}"><button type="button" class="btn btn-outline-secondary btn-lg btn-block" >{{gradeA}}</button></a>
+                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeA, loser=gradeB) }}">
+                                <button type="button" class="btn btn-secondary btn-lg btn-block" >
+                                    <img src="{{url_for('static', filename=imageA)}}" alt="OS" style='height: 200px; width: 100%; object-fit: contain'>
+                                    <div style='font-size:4vw;'>{{gradeA}}</div>
+                                </button>
+                            </a>
                         </div>
 
                     </div>
 
                     <div class="col">
                         <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeB, loser=gradeA) }}"><button type="button" class="btn btn-outline-secondary btn-lg btn-block" >{{gradeB}}</button></a>
+                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeB, loser=gradeA) }}">
+                                <button type="button" class="btn btn-secondary btn-lg btn-block" >
+                                    <img src="{{url_for('static', filename=imageB)}}" style='height: 200px; width: 100%; object-fit: contain'>
+                                    <div style='font-size:4vw;'>{{gradeB}}</div>
+                                </button>
+                            </a>
                         </div>
 
                     </div>
 
                 </div>
-
+                
                 <div class="row mt-5">
 
                     <div class="col">
-                        <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('main') }}"><button type="button" class="btn btn-secondary btn-lg btn-block" >SKIP</button></a>
-                        </div>
-
+                        <form class ="d-flex justify-content-center" method="post">
+                            <fieldset class="w-100 d-flex justify-content-center">
+                                <div class="container-fluid w-100">
+                                    <div class="row d-flex justify-content-center pb-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Onsight Climbing" name="gyms" value="Onsight Climbing" >
+                                            <label class="form-check-label" for="Onsight Climbing">
+                                                Onsight
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Boulder World" name="gyms" value="Boulder World">
+                                            <label class="form-check-label" for="Boulder World">
+                                                Boulder World
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Boulder Plus" name="gyms" value="Boulder Plus">
+                                            <label class="form-check-label" for="Boulder Plus">
+                                                Boulder Plus
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Lighthouse" name="gyms" value="Lighthouse">
+                                            <label class="form-check-label" for="Lighthouse">
+                                                Lighthouse
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Fit Bloc" name="gyms" value="Fit Bloc">
+                                            <label class="form-check-label" for="Fit Bloc">
+                                                Fit Bloc
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Climb Central" name="gyms" value="Climb Central">
+                                            <label class="form-check-label" for="Climb Central">
+                                                Climb Central
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="BFF Climb" name="gyms" value="BFF Climb">
+                                            <label class="form-check-label" for="BFF Climb">
+                                                BFF Climb
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Ground Up" name="gyms" value="Ground Up">
+                                            <label class="form-check-label" for="Ground Up">
+                                                Ground Up
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Kinetics" name="gyms" value="Kinetics">
+                                            <label class="form-check-label" for="Kinetics">
+                                                Kinetics
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center mt-3">
+                                        <button type="submit" class="btn btn-secondary btn-lg btn-block w-100">SKIP</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
                     </div>
-
+                    
                 </div>
-
+                
             </div>
-
+            
         </section>
-
+        
     </main>
-
+    <script>
+        window.onload = function () {
+            {{completeGymList | safe}}.forEach(element => {
+                if ({{userGymList | safe}}.indexOf(element)>=0){
+                    document.getElementById(element).checked = true;
+                }   
+            }
+                                              )
+            
+        }
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 

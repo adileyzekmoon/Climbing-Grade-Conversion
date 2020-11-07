@@ -101,7 +101,6 @@
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 height:700,
-                dataPointMinWidth: 10,
                 
                 
                 axisX:{
@@ -129,7 +128,7 @@
                     showInLegend: true, 
                     name: "Onsight Grades",
                     axisYType: "secondary",
-                    color: "#ebd034",
+                    color: "#ee2b26",
                     dataPoints: {{os | safe}}
                        },
                        {
@@ -137,7 +136,7 @@
                     showInLegend: true, 
                     name: "Boulder World Grades",
                     axisYType: "secondary",
-                    color: "#7ab6de",
+                    color: "#1ea18c",
                     dataPoints: {{bw | safe}}
                        },
                        {
@@ -145,7 +144,7 @@
                     showInLegend: true, 
                     name: "Boulder Plus Grades",
                     axisYType: "secondary",
-                    color: "#c991d9",
+                    color: "#662681",
                     dataPoints: {{bp | safe}}
                        },
                        {
@@ -153,8 +152,48 @@
                     showInLegend: true, 
                     name: "Lighthouse Grades",
                     axisYType: "secondary",
-                    color: "#f27f77",
+                    color: "#a00000",
                     dataPoints: {{lh | safe}}
+                       },
+                       {
+                    type: "bar",
+                    showInLegend: true, 
+                    name: "Fit Bloc Grades",
+                    axisYType: "secondary",
+                    color: "#7c0127",
+                    dataPoints: {{fb | safe}}
+                       },
+                       {
+                    type: "bar",
+                    showInLegend: true, 
+                    name: "Climb Central Grades",
+                    axisYType: "secondary",
+                    color: "#ef7e25",
+                    dataPoints: {{cc | safe}}
+                       },
+                       {
+                    type: "bar",
+                    showInLegend: true, 
+                    name: "BFF Climb Grades",
+                    axisYType: "secondary",
+                    color: "#eb068c",
+                    dataPoints: {{bff | safe}}
+                       },
+                       {
+                    type: "bar",
+                    showInLegend: true, 
+                    name: "Ground Up Grades",
+                    axisYType: "secondary",
+                    color: "#c99f63",
+                    dataPoints: {{gu | safe}}
+                       },
+                       {
+                    type: "bar",
+                    showInLegend: true, 
+                    name: "Kinetics Grades",
+                    axisYType: "secondary",
+                    color: "#c99f63",
+                    dataPoints: {{k | safe}}
                        }
                       ]
             });
