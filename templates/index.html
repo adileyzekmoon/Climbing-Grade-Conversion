@@ -65,42 +65,37 @@
                         <h2 class="d-flex justify-content-center">SG Climbing Grades - Which is harder?</h2>
                     </div>
                 </div>
-
-                <div class="row mt-5">
-
-                    <div class="col-6">
-                        <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeA, loser=gradeB) }}">
-                                <button type="button" class="btn btn-secondary btn-lg btn-block" >
-                                    <img src="{{url_for('static', filename=imageA)}}" alt="OS" style='height: 200px; width: 100%; object-fit: contain'>
-                                    <div style='font-size:4vw;'>{{gradeA}}</div>
-                                </button>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col">
-                        <div class="d-flex justify-content-center">
-                            <a class="w-100 text-decoration-none" href="{{ url_for('submit', winner=gradeB, loser=gradeA) }}">
-                                <button type="button" class="btn btn-secondary btn-lg btn-block" >
-                                    <img src="{{url_for('static', filename=imageB)}}" style='height: 200px; width: 100%; object-fit: contain'>
-                                    <div style='font-size:4vw;'>{{gradeB}}</div>
-                                </button>
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
                 
-                <div class="row mt-5">
+                <div class="row">
 
                     <div class="col">
                         <form class ="d-flex justify-content-center" method="post">
                             <fieldset class="w-100 d-flex justify-content-center">
                                 <div class="container-fluid w-100">
-                                    <div class="row d-flex justify-content-center pb-3">
+                                    <div class="row mt-5">
+                                        
+                                        <div class="col-6">
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" class="btn btn-secondary btn-lg btn-block" name="result" value="{{gradeA, gradeB}}">
+                                                    <img src="{{url_for('static', filename=imageA)}}" alt="OS" style='height: 200px; width: 100%; object-fit: contain'>
+                                                    <div style='font-size:4vw;'>{{gradeA}}</div>
+                                                </button>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="col">
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" class="btn btn-secondary btn-lg btn-block" name="result" value="{{gradeB, gradeA}}">
+                                                    <img src="{{url_for('static', filename=imageB)}}" alt="OS" style='height: 200px; width: 100%; object-fit: contain'>
+                                                    <div style='font-size:4vw;'>{{gradeB}}</div>
+                                                </button>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row d-flex justify-content-center mt-5 pb-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="Onsight Climbing" name="gyms" value="Onsight Climbing" >
                                             <label class="form-check-label" for="Onsight Climbing">
@@ -157,7 +152,7 @@
                                         </div>
                                     </div>
                                     <div class="row d-flex justify-content-center mt-3">
-                                        <button type="submit" class="btn btn-secondary btn-lg btn-block w-100">SKIP</button>
+                                        <button type="submit" class="btn btn-secondary btn-lg btn-block w-100" name="result" value="SKIP">SKIP</button>
                                     </div>
                                 </div>
                             </fieldset>

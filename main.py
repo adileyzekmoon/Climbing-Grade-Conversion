@@ -24,6 +24,35 @@ def main():
     
     if ((request.method == 'POST') and (len(request.form.getlist("gyms"))>0)) :
         print(request.form.getlist("gyms"))
+        if (request.form["result"] != "SKIP" ):
+            print(request.form["result"])
+            print(type(request.form["result"]))
+            splitResult = request.form["result"].split(",")
+            print(splitResult)
+            winner, loser = [splitResult[0][2:-1], splitResult[1][2:-2]]
+            print(winner)
+            print(loser)
+            
+            dataCount = gym["dataCount"]
+            
+            #before matchup
+            winnerRating = Rating(gym["grades"][winner][0],gym["grades"][winner][1])
+            loserRating = Rating(gym["grades"][loser][0],gym["grades"][winner][1])
+            
+            #after matchup
+            winnerRating, loserRating = rate_1vs1(winnerRating, loserRating)
+            print(winnerRating)
+            print(loserRating)
+            
+            post = collection.find_one_and_update({"name": "Climbing Conversion Grades"},
+                                                  {"$set": {"grades."+winner : [winnerRating.mu, 
+                                                                                winnerRating.sigma],
+                                                            "grades."+loser : [loserRating.mu, 
+                                                                               loserRating.sigma]},
+                                                   "$inc": {"dataCount": 1}
+                                                  }
+                                                 )
+        
         userGymList = request.form.getlist("gyms")
         contenderList = []
         for eachGrade in grades:
@@ -31,7 +60,7 @@ def main():
                 if (eachGym in eachGrade):
                     contenderList.append(eachGrade)
                     
-        print(contenderList)
+        #        print(contenderList)
         contenders = random.sample(contenderList, 2)
         
     else:        
@@ -52,8 +81,8 @@ def main():
             imageB = gymImg[i]
     
 #    print(gym)
-    print(userGymList)
-    print(completeGymList)
+#    print(userGymList)
+#    print(completeGymList)
     return render_template('index.html', gradeA=gradeA, gradeB=gradeB, dataCount=dataCount, imageA=imageA, imageB=imageB, userGymList=userGymList, completeGymList=completeGymList)
 
 @app.route('/submit', methods=["POST", "GET"])
