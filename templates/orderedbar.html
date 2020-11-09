@@ -22,8 +22,8 @@
         <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <a class="navbar-brand" href="#">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                        How does this work?
-                    </button>
+                    How does this work?
+                </button>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,12 +44,12 @@
     </header>
 
     <main id="content" class="pt-5">
-        
+
 
         <section id="chart" class="pt-5">
             <div class="container-fluid">
                 <div class="row d-flex justify-content-center">
-                    
+
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -61,15 +61,15 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>
-                                    The ratings of each grade is determined purely from input responses provided by you, the climbing community.
-                                    When you provide an answer to "Which is harder?" in the home page, the algorithm will update both the grades' ratings accordingly. 
-                                    Therefore, the more responses from a wide range of climbers, the more accurate the ratings will be (comparatively to one another of course)!
-                                    <p>
-                                    Current algorithm being used is TrueSkills, derived from ELO rating commonly used to rank chess players and eSports athletes.
-                                    </p>
-                                    <p>All feedback, queries or suggestions are welcome! 
-                                    </p>
-                                    <p><a class="btn btn-primary" href="https://www.instagram.com/adileyzekmoon/">Contact me</a></p>
+                                        The ratings of each grade is determined purely from input responses provided by you, the climbing community.
+                                        When you provide an answer to "Which is harder?" in the home page, the algorithm will update both the grades' ratings accordingly.
+                                        Therefore, the more responses from a wide range of climbers, the more accurate the ratings will be (comparatively to one another of course)!
+                                        <p>
+                                            Current algorithm being used is TrueSkills, derived from ELO rating commonly used to rank chess players and eSports athletes.
+                                        </p>
+                                        <p>All feedback, queries or suggestions are welcome!
+                                        </p>
+                                        <p><a class="btn btn-primary" href="https://www.instagram.com/adileyzekmoon/">Contact me</a></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -78,13 +78,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div id="chartContainer" style="width: 100%;"></div>
-                </div>   
+                </div>
             </div>
-            
-            
+
+
         </section>
 
     </main>
@@ -92,12 +92,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    
 
-    
+
+
     <script>
-        window.onload = function () {
-            
+        window.onload = function() {
+
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 height:700,
@@ -128,76 +128,11 @@
                 data: [{
                     type: "bar",
                     showInLegend: true, 
-                    name: "Onsight Grades",
+                    name: "Grades",
                     axisYType: "secondary",
                     color: "#ee2b26",
-                    dataPoints: {{os | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Boulder World Grades",
-                    axisYType: "secondary",
-                    color: "#1ea18c",
-                    dataPoints: {{bw | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Boulder Plus Grades",
-                    axisYType: "secondary",
-                    color: "#662681",
-                    dataPoints: {{bp | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Lighthouse Grades",
-                    axisYType: "secondary",
-                    color: "#a00000",
-                    dataPoints: {{lh | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Fit Bloc Grades",
-                    axisYType: "secondary",
-                    color: "#7c0127",
-                    dataPoints: {{fb | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Climb Central Grades",
-                    axisYType: "secondary",
-                    color: "#ef7e25",
-                    dataPoints: {{cc | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "BFF Climb Grades",
-                    axisYType: "secondary",
-                    color: "#eb068c",
-                    dataPoints: {{bff | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Ground Up Grades",
-                    axisYType: "secondary",
-                    color: "#c99f63",
-                    dataPoints: {{gu | safe}}
-                       },
-                       {
-                    type: "bar",
-                    showInLegend: true, 
-                    name: "Kinetics Grades",
-                    axisYType: "secondary",
-                    color: "#9ecab3",
-                    dataPoints: {{k | safe}}
-                       }
-                      ]
+                    dataPoints: {{data | safe}}
+                       }]
             });
             chart.render();
             
@@ -211,8 +146,9 @@
                 chart.render();
             }
         }
+
     </script>
-    
+
 </body>
 
 </html>

@@ -68,9 +68,15 @@ def main():
         ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0]) 
         print(ratingDiff, contenders[0], contenders[1])
         while (ratingDiff > 30):
-            contenders = random.sample(contenderList, 2)
-            ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
-            print(ratingDiff, contenders[0], contenders[1])
+            #keep the one with fewer past matchups
+            if (gym["grades"][contenders[0]][1] > gym["grades"][contenders[1]][1]):
+                contenders[1] = random.choice(contenderList)
+                ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
+                print(ratingDiff, contenders[0], contenders[1])
+            else:
+                contenders[0] = random.choice(contenderList)
+                ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
+                print(ratingDiff, contenders[0], contenders[1])
         
     else:        
         userGymList = boulderGyms
@@ -78,9 +84,15 @@ def main():
         ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0]) 
         print(ratingDiff, contenders[0], contenders[1])
         while (ratingDiff > 30):
-            contenders = random.sample(grades, 2)
-            ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
-            print(ratingDiff, contenders[0], contenders[1])
+            #keep the one with fewer past matchups
+            if (gym["grades"][contenders[0]][1] > gym["grades"][contenders[1]][1]):
+                contenders[1] = random.choice(grades)
+                ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
+                print(ratingDiff, contenders[0], contenders[1])
+            else:
+                contenders[0] = random.choice(grades)
+                ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
+                print(ratingDiff, contenders[0], contenders[1])
         
         
     gradeA = contenders[0]
@@ -260,3 +272,21 @@ def rangebar():
     print(os)  
     
     return render_template('rangebar.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k)
+
+
+@app.route('/orderedbar')
+def orderedbar():
+    gym = collection.find_one({"name": "Climbing Conversion Grades"})
+    sortedGyms = sorted(gym["grades"].items(), key=lambda x: x[1][0])
+    
+    data = [] 
+    
+    
+    for i in range(len(sortedGyms)):
+        data.append({"y": sortedGyms[i][1][0],
+                            "label": sortedGyms[i][0]
+                           })
+    
+#    print(data)
+    
+    return render_template('orderedbar.html', data=data)

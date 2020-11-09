@@ -1,9 +1,9 @@
 from trueskill import Rating, rate_1vs1
 
 testA = Rating(100,33)
-testB = Rating(100,10)
+testB = Rating(100,1)
 testC = Rating(10,33)
-testD = Rating(10,10)
+testD = Rating(10,1)
 
 a = "100,new / "
 b = "100,old / "
