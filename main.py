@@ -202,3 +202,61 @@ def graph():
     
     
     return render_template('graph.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k)
+
+
+@app.route('/rangebar')
+def rangebar():
+    gym = collection.find_one({"name": "Climbing Conversion Grades"})
+    grades = list(gym["grades"].keys())
+    ratings = list(gym["grades"].values())
+    dataCount = gym["dataCount"]
+    os = []
+    bw = []
+    bp = []
+    lh = []
+    fb = []
+    cc = []
+    bff = []
+    gu = []
+    k=[]
+    for i in range(len(grades)):
+        if ("Onsight Climbing" in grades[i]):
+            os.append(ratings[i][0])
+            
+        if ("Boulder World" in grades[i]):
+            bw.append(ratings[i][0])
+            
+        if ("Boulder Plus" in grades[i]):
+            bp.append(ratings[i][0])
+            
+        if ("Lighthouse" in grades[i]):
+            lh.append(ratings[i][0])
+            
+        if ("Fit Bloc" in grades[i]):
+            fb.append(ratings[i][0])
+            
+        if ("Climb Central" in grades[i]):
+            cc.append(ratings[i][0])
+            
+        if ("BFF Climb" in grades[i]):
+            bff.append(ratings[i][0])
+            
+        if ("Ground Up" in grades[i]):
+            gu.append(ratings[i][0])
+        
+        if ("Kinetics" in grades[i]):
+            k.append(ratings[i][0])
+    
+    os = [min(os), max(os)]
+    bw = [min(bw), max(bw)]
+    bp = [min(bp), max(bp)]
+    lh = [min(lh), max(lh)]
+    fb = [min(fb), max(fb)]
+    cc = [min(cc), max(cc)]
+    bff = [min(bff), max(bff)]
+    gu = [min(gu), max(gu)]
+    k=[min(k), max(k)]
+    
+    print(os)  
+    
+    return render_template('rangebar.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k)
