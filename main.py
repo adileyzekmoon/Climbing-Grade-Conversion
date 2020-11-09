@@ -24,6 +24,8 @@ def main():
     
     if ((request.method == 'POST') and (len(request.form.getlist("gyms"))>0)) :
         print(request.form.getlist("gyms"))
+        
+        #if one of the 2 submit buttons were pressed
         if (request.form["result"] != "SKIP" ):
             print(request.form["result"])
             print(type(request.form["result"]))
@@ -63,9 +65,22 @@ def main():
         #        print(contenderList)
         contenders = random.sample(contenderList, 2)
         
+        ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0]) 
+        print(ratingDiff, contenders[0], contenders[1])
+        while (ratingDiff > 30):
+            contenders = random.sample(contenderList, 2)
+            ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
+            print(ratingDiff, contenders[0], contenders[1])
+        
     else:        
         userGymList = boulderGyms
         contenders = random.sample(grades, 2)
+        ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0]) 
+        print(ratingDiff, contenders[0], contenders[1])
+        while (ratingDiff > 30):
+            contenders = random.sample(grades, 2)
+            ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0])
+            print(ratingDiff, contenders[0], contenders[1])
         
         
     gradeA = contenders[0]
