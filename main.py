@@ -283,7 +283,7 @@ def orderedbar():
     
     
     for i in range(len(sortedGyms)):
-        data.append({"y": sortedGyms[i][1][0],
+        data.insert(0, {"y": round(sortedGyms[i][1][0], 2),
                             "label": sortedGyms[i][0]
                            })
     

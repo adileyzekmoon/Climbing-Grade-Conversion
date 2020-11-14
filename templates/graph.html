@@ -14,45 +14,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 {% endblock %}
 
-{% block navbrand %}
-    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                        How does this work?
-                    </button>
-{% endblock %}
-
 {% block content %}
     <section id="chart" class="pt-5">
             <div class="container-fluid">
-                <div class="row d-flex justify-content-center">
-                    
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">SG Climbing Comparisons</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>
-                                    The ratings of each grade is determined purely from input responses provided by you, the climbing community.
-                                    When you provide an answer to "Which is harder?" in the home page, the algorithm will update both the grades' ratings accordingly. 
-                                    Therefore, the more responses from a wide range of climbers, the more accurate the ratings will be (comparatively to one another of course)!
-                                    <p>
-                                    Current algorithm being used is TrueSkills, derived from ELO rating commonly used to rank chess players and eSports athletes.
-                                    </p>
-                                    <p>All feedback, queries or suggestions are welcome! 
-                                    </p>
-                                    <p><a class="btn btn-primary" href="https://www.instagram.com/adileyzekmoon/">Contact me</a></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="row">
                     <div id="chartContainer" style="width: 100%;"></div>
