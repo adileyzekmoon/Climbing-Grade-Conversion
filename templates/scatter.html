@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/978b63f316.js" crossorigin="anonymous"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+{% endblock %}
+
+
+{% block content %}
+<section id="chart" class="pt-5">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div id="chartContainer" style="width: 100%"></div>
+        </div>
+    </div>
+
+
+</section>
+{% endblock %}
+
+{% block js %}
+<script>
+    window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            axisX: {
+                labelFormatter: function(){
+                        return " ";}
+            },
+            axisY: {
+                title: "Ratings"
+            },
+            legend: {
+                    cursor:"pointer",
+                    itemclick : toggleDataSeries
+                },
+            data: [{
+                    type: "boxAndWhisker",
+                    legendText: " ",
+                    dataPoints: [{
+                            x: 1,
+                            y: {{osb | safe}},
+                            label: "Onsight Climbing"
+                        },
+                        {
+                            x: 2,
+                            y: {{bwb | safe}},
+                            label: "Boulder World"
+                        },
+                        {
+                            x: 4,
+                            y: {{lhb | safe}},
+                            label: "Lighthouse"
+                        },
+                        {
+                            x: 3,
+                            y: {{bpb | safe}},
+                            label: "Boulder Plus"
+                        },
+                        {
+                            x: 5,
+                            y: {{fbb | safe}},
+                            label: "Fit Bloc"
+                        },
+                        {
+                            x: 6,
+                            y: {{ccb | safe}},
+                            label: "Climb Central"
+                        },
+                        {
+                            x: 7,
+                            y: {{bffb | safe}},
+                            label: "BFF Climb"
+                        },
+                        {
+                            x: 8,
+                            y: {{gub | safe}},
+                            label: "Ground Up"
+                        },
+                        {
+                            x: 9,
+                            y: {{kb | safe}},
+                            label: "Kinetics"
+                        }
+                    ]
+                },
+                   {
+                    type: "scatter",
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label} <br/><b> Rating:</b></span> {y} ",
+                    name: "Onsight",
+                    showInLegend: true,
+                    dataPoints: {{os | safe}}
+                },
+                {
+                    type: "scatter",
+                    name: "Boulder World",
+                    showInLegend: true,
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    dataPoints: {{bw | safe}}
+                },
+                {
+                    type: "scatter",
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    name: "Boulder Plus",
+                    showInLegend: true,
+                    dataPoints: {{bp | safe}}
+                },
+                {
+                    type: "scatter",
+                    name: "Lighthouse",
+                    showInLegend: true,
+                    toolTipContent: "<span ><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    dataPoints: {{lh | safe}}
+                },
+                {
+                    type: "scatter",
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    name: "Fit Bloc",
+                    showInLegend: true,
+                    dataPoints: {{fb | safe}}
+                },
+                {
+                    type: "scatter",
+                    name: "Climb Central",
+                    showInLegend: true,
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    dataPoints: {{cc | safe}}
+                },
+                {
+                    type: "scatter",
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    name: "BFF Climb",
+                    showInLegend: true,
+                    dataPoints: {{bff | safe}}
+                },
+                {
+                    type: "scatter",
+                    name: "Ground Up",
+                    showInLegend: true,
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    dataPoints: {{gu | safe}}
+                },
+                {
+                    type: "scatter",
+                    toolTipContent: "<span><b>{name}</b></span><br/><b> Grade:</b> {label}  <br/><b> Rating:</b></span> {y} ",
+                    name: "Kinetics",
+                    showInLegend: true,
+                    dataPoints: {{k | safe}}
+                }
+            ]
+        });
+        chart.render();
+        
+        function toggleDataSeries(e) {
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+    }
+
+</script>
+{% endblock %}

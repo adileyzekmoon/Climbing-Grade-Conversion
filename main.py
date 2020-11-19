@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from trueskill import Rating, rate_1vs1
 import random
+import statistics
 from db import client
 import os
 
@@ -269,7 +270,7 @@ def rangebar():
     gu = [min(gu), max(gu)]
     k=[min(k), max(k)]
     
-    print(os)  
+#    print(os)  
     
     return render_template('rangebar.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k)
 
@@ -290,3 +291,97 @@ def orderedbar():
 #    print(data)
     
     return render_template('orderedbar.html', data=data)
+
+@app.route('/scatter')
+def scatter():
+    gym = collection.find_one({"name": "Climbing Conversion Grades"})
+    grades = list(gym["grades"].keys())
+    ratings = list(gym["grades"].values())
+    dataCount = gym["dataCount"]
+    os = []
+    osb = []
+    bw = []
+    bwb=[]
+    bp = []
+    lh = []
+    fb = []
+    cc = []
+    bff = []
+    gu = []
+    k=[]
+    bpb = []
+    lhb = []
+    fbb = []
+    ccb = []
+    bffb = []
+    gub = []
+    kb=[]
+    for i in range(len(grades)):
+        if ("Onsight Climbing" in grades[i]):
+            os.append({"x": 1,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            osb.append(ratings[i][0])
+            
+        if ("Boulder World" in grades[i]):
+            bw.append({"x": 2,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            bwb.append(ratings[i][0])
+            
+        if ("Boulder Plus" in grades[i]):
+            bp.append({"x": 3,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            bpb.append(ratings[i][0])
+            
+        if ("Lighthouse" in grades[i]):
+            lh.append({"x": 4,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            lhb.append(ratings[i][0])
+            
+        if ("Fit Bloc" in grades[i]):
+            fb.append({"x": 5,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            fbb.append(ratings[i][0])
+            
+        if ("Climb Central" in grades[i]):
+            cc.append({"x": 6,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            ccb.append(ratings[i][0])
+            
+        if ("BFF Climb" in grades[i]):
+            bff.append({"x": 7,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            bffb.append(ratings[i][0])
+            
+        if ("Ground Up" in grades[i]):
+            gu.append({"x": 8,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            gub.append(ratings[i][0])
+        
+        if ("Kinetics" in grades[i]):
+            k.append({"x": 9,
+                       "y": ratings[i][0],
+                       "label": grades[i]})
+            kb.append(ratings[i][0])
+
+    
+    
+    osb = [min(osb),statistics.quantiles(osb)[0],statistics.quantiles(osb)[2], max(osb), statistics.quantiles(osb)[1]]
+    bwb = [min(bwb),statistics.quantiles(bwb)[0],statistics.quantiles(bwb)[2], max(bwb), statistics.quantiles(bwb)[1]]
+    bpb = [min(bpb),statistics.quantiles(bpb)[0],statistics.quantiles(bpb)[2], max(bpb), statistics.quantiles(bpb)[1]]
+    lhb = [min(lhb),statistics.quantiles(lhb)[0],statistics.quantiles(lhb)[2], max(lhb), statistics.quantiles(lhb)[1]]
+    fbb = [min(fbb),statistics.quantiles(fbb)[0],statistics.quantiles(fbb)[2], max(fbb), statistics.quantiles(fbb)[1]]
+    ccb = [min(ccb),statistics.quantiles(ccb)[0],statistics.quantiles(ccb)[2], max(ccb), statistics.quantiles(ccb)[1]]
+    bffb = [min(bffb),statistics.quantiles(bffb)[0],statistics.quantiles(bffb)[2], max(bffb), statistics.quantiles(bffb)[1]]
+    gub = [min(gub),statistics.quantiles(gub)[0],statistics.quantiles(gub)[2], max(gub), statistics.quantiles(gub)[1]]
+    kb = [min(kb),statistics.quantiles(kb)[0],statistics.quantiles(kb)[2], max(kb), statistics.quantiles(kb)[1]]
+
+    
+    return render_template('scatter.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k, osb=osb, bwb=bwb, bpb=bpb, lhb=lhb, fbb=fbb, ccb=ccb, bffb=bffb, gub=gub, kb=kb)
