@@ -68,7 +68,7 @@ def main():
         
         ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0]) 
         print(ratingDiff, contenders[0], contenders[1])
-        while (ratingDiff > 30):
+        while ((ratingDiff > 30) or (contenders[0] == contenders[1])):
             #keep the one with fewer past matchups
             if (gym["grades"][contenders[0]][1] > gym["grades"][contenders[1]][1]):
                 contenders[1] = random.choice(contenderList)
@@ -84,7 +84,7 @@ def main():
         contenders = random.sample(grades, 2)
         ratingDiff = abs(gym["grades"][contenders[0]][0] - gym["grades"][contenders[1]][0]) 
         print(ratingDiff, contenders[0], contenders[1])
-        while (ratingDiff > 30):
+        while ((ratingDiff > 30) or (contenders[0] == contenders[1])):
             #keep the one with fewer past matchups
             if (gym["grades"][contenders[0]][1] > gym["grades"][contenders[1]][1]):
                 contenders[1] = random.choice(grades)
