@@ -318,55 +318,55 @@ def scatter():
     kb=[]
     for i in range(len(grades)):
         if ("Onsight Climbing" in grades[i]):
-            os.append({"x": 1.5,
+            os.append({"x": 1.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             osb.append(ratings[i][0])
             
         if ("Boulder World" in grades[i]):
-            bw.append({"x": 2.5,
+            bw.append({"x": 2.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             bwb.append(ratings[i][0])
             
         if ("Boulder Plus" in grades[i]):
-            bp.append({"x": 3.5,
+            bp.append({"x": 3.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             bpb.append(ratings[i][0])
             
         if ("Lighthouse" in grades[i]):
-            lh.append({"x": 4.5,
+            lh.append({"x": 4.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             lhb.append(ratings[i][0])
             
         if ("Fit Bloc" in grades[i]):
-            fb.append({"x": 5.5,
+            fb.append({"x": 5.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             fbb.append(ratings[i][0])
             
         if ("Climb Central" in grades[i]):
-            cc.append({"x": 6.5,
+            cc.append({"x": 6.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             ccb.append(ratings[i][0])
             
         if ("BFF Climb" in grades[i]):
-            bff.append({"x": 7.5,
+            bff.append({"x": 7.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             bffb.append(ratings[i][0])
             
         if ("Ground Up" in grades[i]):
-            gu.append({"x": 8.5,
+            gu.append({"x": 8.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             gub.append(ratings[i][0])
         
         if ("Kinetics" in grades[i]):
-            k.append({"x": 9.5,
+            k.append({"x": 9.2,
                        "y": ratings[i][0],
                        "label": grades[i]})
             kb.append(ratings[i][0])
