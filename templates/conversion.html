@@ -1,347 +1,308 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/978b63f316.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/978b63f316.js" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 {% endblock %}
 
 
 
 {% block content %}
-    <section id="quiz" class="pt-5">
+<section id="quiz" class="pt-5">
 
-            <div class="container-fluid">
+    <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col">
-                        <h2 class="d-flex justify-content-center">SG Climbing Grades Converter</h2>
-                    </div>
-                </div>
-                
-                <div class="row">
-
-                    <div class="col">
-                        <form class ="d-flex justify-content-center" method="post">
-                            <fieldset class="w-100 d-flex justify-content-center">
-                                <div class="container-fluid w-100">
-                                    <div class="row mt-5">
-                                        
-                                        <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='OS.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in os %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="OSRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                       <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='BW.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in bw %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="BWRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row mt-5">    
-                                        <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='LH.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in lh %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="LHRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                        <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='BP.webp')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in bp %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="BPRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-5">
-                                       <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='FB.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in fb %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="FBRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='CC.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in cc %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="CCRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row mt-5">
-                                        
-                                        <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='BFF.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in bff %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="BFFRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                       <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='GU.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in gu %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="GURating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row mt-5">
-                                        <div class="col-6">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="card text-white bg-secondary">
-                                                    <img class="card-img-top px-3" src="{{url_for('static', filename='K.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
-                                                    <div class="card-body">
-                                                        
-                                                        <select class="custom-select" onchange="getEquivalents(this)">
-                                                            <option selected>Open this select menu</option>
-                                                            {%- for each in k %} 
-                                                                <option>{{each}}</option>
-                                                            {%- endfor %}
-                                                        </select>
-                                                        
-                                                        <p class="card-text alert alert-secondary mt-3" id="KRating" style='font-size:3vw;'></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                        
-                    </div>
-                    
-                </div>
-                
+        <div class="row">
+            <div class="col">
+                <h2 class="d-flex justify-content-center">SG Climbing Grades Converter</h2>
             </div>
-            
-        </section>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='OS.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in os %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="OSRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='BW.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in bw %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="BWRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='LH.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in lh %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="LHRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='BP.webp')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in bp %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="BPRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='FB.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in fb %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="FBRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='CC.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in cc %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="CCRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='BFF.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in bff %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="BFFRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='GU.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in gu %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="GURating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card text-white bg-secondary m-1" style="width:150px;height:310px">
+                    <img class="card-img-top p-3" src="{{url_for('static', filename='K.png')}}" alt="Card image cap">
+                    <div class="card-body">
+
+                        <select class="custom-select" onchange="getEquivalents(this)">
+                            <option selected>Open this select menu</option>
+                            {%- for each in k %}
+                            <option>{{each}}</option>
+                            {%- endfor %}
+                        </select>
+
+                        <p class="card-text alert alert-secondary mt-3" id="KRating" style='font-size:12px;'></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</section>
 {% endblock %}
 
 {% block js %}
-    <script>
+<script>
+    function getEquivalents(selectObject) {
+        var value = selectObject.value;
+        console.log(value);
+        var OSRating = document.getElementById("OSRating");
+        var BWRating = document.getElementById("BWRating");
+        var LHRating = document.getElementById("LHRating");
+        var BFFRating = document.getElementById("BFFRating");
+        var GURating = document.getElementById("GURating");
+        var KRating = document.getElementById("KRating");
+        var FBRating = document.getElementById("FBRating");
+        var BPRating = document.getElementById("BPRating");
+        var CCRating = document.getElementById("CCRating");
+        var grades = {{gym["grades"] | safe}};
+        //            console.log(grades[value][0]);
+        //            rating.innerHTML = "Rating: " + grades[value][0];
 
-        function getEquivalents(selectObject){
-            var value = selectObject.value;  
-            console.log(value);
-            var OSRating = document.getElementById("OSRating");
-            var BWRating = document.getElementById("BWRating");
-            var LHRating = document.getElementById("LHRating");
-            var BFFRating = document.getElementById("BFFRating");
-            var GURating = document.getElementById("GURating");
-            var KRating = document.getElementById("KRating");
-            var FBRating = document.getElementById("FBRating");
-            var BPRating = document.getElementById("BPRating");
-            var CCRating = document.getElementById("CCRating");
-            var grades = {{gym["grades"] | safe}};
-//            console.log(grades[value][0]);
-//            rating.innerHTML = "Rating: " + grades[value][0];
-        
-            var base = grades[value][0];
-            var OSEquivalent = 1000;
-            var BWEquivalent = 1000;
-            var LHEquivalent = 1000;
-            var BFFEquivalent = 1000;
-            var GUEquivalent = 1000;
-            var KEquivalent = 1000;
-            var BPEquivalent = 1000;
-            var FBEquivalent = 1000;
-            var CCEquivalent = 1000;
-        
-            var OSGrade = "";
-            var BWGrade = "";
-            var LHGrade = "";
-            var BFFGrade = "";
-            var GUGrade = "";
-            var KGrade = "";
-            var BPGrade = "";
-            var FBGrade = "";
-            var CCGrade = "";
-        
-            console.log(grades);
-            for (var each in grades){
-//                console.log(each, grades[each][0]);
-                if (each.includes("Onsight")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(OSEquivalent-base)){
-                        OSEquivalent = grades[each][0];
-                        OSGrade = each;
-                        console.log(each, grades[each], (Math.abs(grades[each][0]-base)), OSEquivalent);
-                    }
-                }
-                if (each.includes("Boulder World")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(BWEquivalent-base)){
-                        BWEquivalent = grades[each][0];
-                        BWGrade = each;
-                    }
-                }
-                if (each.includes("Lighthouse")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(LHEquivalent-base)){
-                        LHEquivalent = grades[each][0];
-                        LHGrade = each;
-                    }
-                }
-                if (each.includes("Fit Bloc")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(FBEquivalent-base)){
-                        FBEquivalent = grades[each][0];
-                        FBGrade = each;
-                    }
-                }
-                if (each.includes("Climb Central")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(CCEquivalent-base)){
-                        CCEquivalent = grades[each][0];
-                        CCGrade = each;
-                    }
-                }
-                if (each.includes("BFF")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(BFFEquivalent-base)){
-                        BFFEquivalent = grades[each][0];
-                        BFFGrade = each;
-                    }
-                }
-                if (each.includes("Boulder Plus")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(BPEquivalent-base)){
-                        BPEquivalent = grades[each][0];
-                        BPGrade = each;
-                    }
-                }
-                if (each.includes("Ground")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(GUEquivalent-base)){
-                        GUEquivalent = grades[each][0];
-                        GUGrade = each;
-                    }
-                }
-                if (each.includes("Kinetics")){
-                    if (Math.abs(grades[each][0]-base) < Math.abs(KEquivalent-base)){
-                        KEquivalent = grades[each][0];
-                        KGrade = each;
-                    }
+        var base = grades[value][0];
+        var OSEquivalent = 1000;
+        var BWEquivalent = 1000;
+        var LHEquivalent = 1000;
+        var BFFEquivalent = 1000;
+        var GUEquivalent = 1000;
+        var KEquivalent = 1000;
+        var BPEquivalent = 1000;
+        var FBEquivalent = 1000;
+        var CCEquivalent = 1000;
+
+        var OSGrade = "";
+        var BWGrade = "";
+        var LHGrade = "";
+        var BFFGrade = "";
+        var GUGrade = "";
+        var KGrade = "";
+        var BPGrade = "";
+        var FBGrade = "";
+        var CCGrade = "";
+
+        console.log(grades);
+        for (var each in grades) {
+            //                console.log(each, grades[each][0]);
+            if (each.includes("Onsight")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(OSEquivalent - base)) {
+                    OSEquivalent = grades[each][0];
+                    OSGrade = each;
+                    console.log(each, grades[each], (Math.abs(grades[each][0] - base)), OSEquivalent);
                 }
             }
-            console.log(OSEquivalent, BWEquivalent, FBEquivalent, LHEquivalent);
-            
-            OSRating.innerHTML = "<b>" + OSGrade + "</b>: " + OSEquivalent.toFixed(2);
-            BWRating.innerHTML = "<b>" + BWGrade + "</b>: " + BWEquivalent.toFixed(2);
-            LHRating.innerHTML = "<b>" + LHGrade + "</b>: " + LHEquivalent.toFixed(2);
-            BFFRating.innerHTML = "<b>" + BFFGrade + "</b>: " + BFFEquivalent.toFixed(2);
-            GURating.innerHTML = "<b>" + GUGrade + "</b>: " + GUEquivalent.toFixed(2);
-            KRating.innerHTML = "<b>" + KGrade + "</b>: " + KEquivalent.toFixed(2);
-            FBRating.innerHTML = "<b>" + FBGrade + "</b>: " + FBEquivalent.toFixed(2);
-            BPRating.innerHTML = "<b>" + BPGrade + "</b>: " + BPEquivalent.toFixed(2);
-            CCRating.innerHTML = "<b>" + CCGrade + "</b>: " + CCEquivalent.toFixed(2);
-            
-            selectObject.selectedIndex = 0;
-        
-            
-
+            if (each.includes("Boulder World")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(BWEquivalent - base)) {
+                    BWEquivalent = grades[each][0];
+                    BWGrade = each;
+                }
+            }
+            if (each.includes("Lighthouse")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(LHEquivalent - base)) {
+                    LHEquivalent = grades[each][0];
+                    LHGrade = each;
+                }
+            }
+            if (each.includes("Fit Bloc")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(FBEquivalent - base)) {
+                    FBEquivalent = grades[each][0];
+                    FBGrade = each;
+                }
+            }
+            if (each.includes("Climb Central")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(CCEquivalent - base)) {
+                    CCEquivalent = grades[each][0];
+                    CCGrade = each;
+                }
+            }
+            if (each.includes("BFF")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(BFFEquivalent - base)) {
+                    BFFEquivalent = grades[each][0];
+                    BFFGrade = each;
+                }
+            }
+            if (each.includes("Boulder Plus")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(BPEquivalent - base)) {
+                    BPEquivalent = grades[each][0];
+                    BPGrade = each;
+                }
+            }
+            if (each.includes("Ground")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(GUEquivalent - base)) {
+                    GUEquivalent = grades[each][0];
+                    GUGrade = each;
+                }
+            }
+            if (each.includes("Kinetics")) {
+                if (Math.abs(grades[each][0] - base) < Math.abs(KEquivalent - base)) {
+                    KEquivalent = grades[each][0];
+                    KGrade = each;
+                }
+            }
         }
-    </script>
+        console.log(OSEquivalent, BWEquivalent, FBEquivalent, LHEquivalent);
+
+        OSRating.innerHTML = "<b>" + OSGrade + "</b>: " + OSEquivalent.toFixed(2);
+        BWRating.innerHTML = "<b>" + BWGrade + "</b>: " + BWEquivalent.toFixed(2);
+        LHRating.innerHTML = "<b>" + LHGrade + "</b>: " + LHEquivalent.toFixed(2);
+        BFFRating.innerHTML = "<b>" + BFFGrade + "</b>: " + BFFEquivalent.toFixed(2);
+        GURating.innerHTML = "<b>" + GUGrade + "</b>: " + GUEquivalent.toFixed(2);
+        KRating.innerHTML = "<b>" + KGrade + "</b>: " + KEquivalent.toFixed(2);
+        FBRating.innerHTML = "<b>" + FBGrade + "</b>: " + FBEquivalent.toFixed(2);
+        BPRating.innerHTML = "<b>" + BPGrade + "</b>: " + BPEquivalent.toFixed(2);
+        CCRating.innerHTML = "<b>" + CCGrade + "</b>: " + CCEquivalent.toFixed(2);
+
+        selectObject.selectedIndex = 0;
+
+
+
+    }
+
+</script>
 {% endblock %}
