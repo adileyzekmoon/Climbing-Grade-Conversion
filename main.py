@@ -111,6 +111,7 @@ def main():
 #    print(gym)
 #    print(userGymList)
 #    print(completeGymList)
+#    print(type(contenders[0]))
     return render_template('index.html', gradeA=gradeA, gradeB=gradeB, dataCount=dataCount, imageA=imageA, imageB=imageB, userGymList=userGymList, completeGymList=completeGymList)
 
 @app.route('/submit', methods=["POST", "GET"])

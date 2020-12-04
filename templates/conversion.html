@@ -20,8 +20,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <h2 class="d-flex justify-content-center">SG Climbing Grades - Which is harder?</h2>
-                        <h5 class="d-flex justify-content-center">Current number of responses: {{dataCount}}</h5>
+                        <h2 class="d-flex justify-content-center">SG Climbing Grades Converter</h2>
                     </div>
                 </div>
                 
@@ -30,10 +29,10 @@
                     <div class="col">
                         <form class ="d-flex justify-content-center" method="post">
                             <fieldset class="w-100 d-flex justify-content-center">
-                                <div class="container-fluid w-100 m-5">
+                                <div class="container-fluid w-100">
                                     <div class="row mt-5">
                                         
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='OS.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -46,13 +45,13 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="OSRating" ></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="OSRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                       <div class="col-4">
+                                       <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='BW.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -65,13 +64,15 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="BWRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="BWRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div class="col-4">
+                                    </div>
+                                    
+                                    <div class="row mt-5">    
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='LH.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -84,16 +85,14 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="LHRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="LHRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                    </div>
-                                    <div class="row mt-5">
                                         
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='BP.webp')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -106,13 +105,15 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="BPRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="BPRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                       <div class="col-4">
+                                    </div>
+
+                                    <div class="row mt-5">
+                                       <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='FB.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -125,13 +126,13 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="FBRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="FBRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='CC.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -144,7 +145,7 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="CCRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="CCRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,7 +154,7 @@
                                     </div>
                                     <div class="row mt-5">
                                         
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='BFF.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -166,13 +167,13 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="BFFRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="BFFRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                       <div class="col-4">
+                                       <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='GU.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -185,13 +186,15 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="GURating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="GURating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div class="col-4">
+                                    </div>
+                                    
+                                    <div class="row mt-5">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-center">
                                                 <div class="card text-white bg-secondary">
                                                     <img class="card-img-top px-3" src="{{url_for('static', filename='K.png')}}" alt="Card image cap" style='height: 200px; width: 100%; object-fit: contain'>
@@ -204,7 +207,7 @@
                                                             {%- endfor %}
                                                         </select>
                                                         
-                                                        <p class="card-text alert alert-secondary mt-3" id="KRating"></p>
+                                                        <p class="card-text alert alert-secondary mt-3" id="KRating" style='font-size:3vw;'></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -325,15 +328,15 @@
             }
             console.log(OSEquivalent, BWEquivalent, FBEquivalent, LHEquivalent);
             
-            OSRating.innerHTML = "<b>" + OSGrade + "</b>: " + OSEquivalent;
-            BWRating.innerHTML = "<b>" + BWGrade + "</b>: " + BWEquivalent;
-            LHRating.innerHTML = "<b>" + LHGrade + "</b>: " + LHEquivalent;
-            BFFRating.innerHTML = "<b>" + BFFGrade + "</b>: " + BFFEquivalent;
-            GURating.innerHTML = "<b>" + GUGrade + "</b>: " + GUEquivalent;
-            KRating.innerHTML = "<b>" + KGrade + "</b>: " + KEquivalent;
-            FBRating.innerHTML = "<b>" + FBGrade + "</b>: " + FBEquivalent;
-            BPRating.innerHTML = "<b>" + BPGrade + "</b>: " + BPEquivalent;
-            CCRating.innerHTML = "<b>" + CCGrade + "</b>: " + CCEquivalent;
+            OSRating.innerHTML = "<b>" + OSGrade + "</b>: " + OSEquivalent.toFixed(2);
+            BWRating.innerHTML = "<b>" + BWGrade + "</b>: " + BWEquivalent.toFixed(2);
+            LHRating.innerHTML = "<b>" + LHGrade + "</b>: " + LHEquivalent.toFixed(2);
+            BFFRating.innerHTML = "<b>" + BFFGrade + "</b>: " + BFFEquivalent.toFixed(2);
+            GURating.innerHTML = "<b>" + GUGrade + "</b>: " + GUEquivalent.toFixed(2);
+            KRating.innerHTML = "<b>" + KGrade + "</b>: " + KEquivalent.toFixed(2);
+            FBRating.innerHTML = "<b>" + FBGrade + "</b>: " + FBEquivalent.toFixed(2);
+            BPRating.innerHTML = "<b>" + BPGrade + "</b>: " + BPEquivalent.toFixed(2);
+            CCRating.innerHTML = "<b>" + CCGrade + "</b>: " + CCEquivalent.toFixed(2);
             
             selectObject.selectedIndex = 0;
         
