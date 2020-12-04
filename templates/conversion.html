@@ -299,6 +299,118 @@
         CCRating.innerHTML = "<b>" + CCGrade + "</b>: " + CCEquivalent.toFixed(2);
 
         selectObject.selectedIndex = 0;
+    
+        
+        
+        OSRating.classList.remove('alert-secondary', 'alert-primary');
+        BWRating.classList.remove('alert-secondary', 'alert-primary');
+        LHRating.classList.remove('alert-secondary', 'alert-primary');
+        BFFRating.classList.remove('alert-secondary', 'alert-primary');
+        GURating.classList.remove('alert-secondary', 'alert-primary');
+        KRating.classList.remove('alert-secondary', 'alert-primary');
+        FBRating.classList.remove('alert-secondary', 'alert-primary');
+        BPRating.classList.remove('alert-secondary', 'alert-primary');
+        CCRating.classList.remove('alert-secondary', 'alert-primary');
+        
+        if (value.includes("Onsight")){
+            OSRating.classList.add('alert-primary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Boulder World")){
+            BWRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Lighthouse")){
+            LHRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Fit Bloc")){
+            FBRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Climb Central")){
+            CCRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+        }
+        if (value.includes("BFF")){
+            BFFRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Boulder Plus")){
+            BPRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Ground")){
+            GURating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            KRating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
+        if (value.includes("Kinetics")){
+            KRating.classList.add('alert-primary');
+            OSRating.classList.add('alert-secondary');
+            BWRating.classList.add('alert-secondary');
+            LHRating.classList.add('alert-secondary');
+            BFFRating.classList.add('alert-secondary');
+            GURating.classList.add('alert-secondary');
+            FBRating.classList.add('alert-secondary');
+            BPRating.classList.add('alert-secondary');
+            CCRating.classList.add('alert-secondary');
+        }
 
 
 
