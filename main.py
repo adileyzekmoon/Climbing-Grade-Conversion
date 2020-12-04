@@ -385,3 +385,49 @@ def scatter():
 
     
     return render_template('scatter.html', dataCount=dataCount, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k, osb=osb, bwb=bwb, bpb=bpb, lhb=lhb, fbb=fbb, ccb=ccb, bffb=bffb, gub=gub, kb=kb)
+
+@app.route('/conversion')
+def conversion():
+    gym = collection.find_one({"name": "Climbing Conversion Grades"})
+    grades = list(gym["grades"].keys())
+    ratings = list(gym["grades"].values())
+    dataCount = gym["dataCount"]
+    os = []
+    bw = []
+    bp = []
+    lh = []
+    fb = []
+    cc = []
+    bff = []
+    gu = []
+    k=[]
+    for i in grades:
+        if ("Onsight Climbing" in i):
+            os.append(i)
+            
+        if ("Boulder World" in i):
+            bw.append(i)
+            
+        if ("Boulder Plus" in i):
+            bp.append(i)
+            
+        if ("Lighthouse" in i):
+            lh.append(i)
+            
+        if ("Fit Bloc" in i):
+            fb.append(i)
+            
+        if ("Climb Central" in i):
+            cc.append(i)
+            
+        if ("BFF Climb" in i):
+            bff.append(i)
+            
+        if ("Ground Up" in i):
+            gu.append(i)
+            
+        if ("Kinetics" in i):
+            k.append(i)
+            
+    return render_template('conversion.html', gym=gym, os=os, bw=bw, bp=bp, lh=lh, fb=fb, cc=cc, bff=bff, gu=gu, k=k)
+        
